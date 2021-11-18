@@ -1,7 +1,15 @@
 # ETL Using Airflow
+
+---
+**Project outline**: Getting data of temprature from different weather stations in Germany. Find average temprature of each city in Germany, for everyday in a year, by only selecting weather stations that are in 5km radius from the center of city. After getting temprature for each day take calculate "hotness score". A city "hotness" score is the number of days in the last full year that its median values are higher than the overall Germany median values by more or equal to 3 degrees Celsius.
+
+*City data*: https://codierung.adfc-hessen.de/code/ein/code/opengeodb/DE.tab
+*Weather stations*: https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt
+*Weather stations' data partitioned by year*: https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/by_year/
+
 ---
 
-This document presents the approach the thought process that went into the completion of the task. The document is divided into 3 major reading parts and you can read it any way you prefer (recommend to do one by one only.)
+This document presents the approach the thought process that went into the completion of the project. The document is divided into 3 major reading parts and you can read it any way you prefer (recommend to do one by one only.)
 
 
 The sections are as follows:
@@ -14,16 +22,16 @@ The sections are as follows:
 
 # Task wise
 
-1. **Write a script that imports data into an SQL database**
+1. **Writing a script that imports data into an SQL database**
 
-This was a fairly easy part of the process, it was done by fetching the content from the web using [requests]() library.
+This is a fairly easy part of the process, it was done by fetching the content from the web using [requests]() library.
 The fetched file was then parsed using [pandas]() and uploaded to [postgreSQL]() as a chunk.
 
 This whole pipeline is broken down into small modular and reusable Extract - Load pairs which can be instantiated at runtime.
 
 > The Extract-Load part is highly modular and extensible and since the entire code supports chunking at its core it's highly reliable when given big volumes of data.
 
-2. **Filter the data using SQL only to the relevant pieces**
+2. **Filtering the data using SQL only to the relevant pieces**
 
 For this part, I already have German - city and station data in the Postgres DB. I employ cross join here, to map each station against each city and then filter lat and longitude according to the given condition and then load it to the ```city_stations``` table.
 
