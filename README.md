@@ -1,6 +1,4 @@
-# Data Engineer challenge
-
-### By: Prakhar Srivastava | For: Trade Republic
+# ETL Using Airflow
 ---
 
 This document presents the approach the thought process that went into the completion of the task. The document is divided into 3 major reading parts and you can read it any way you prefer (recommend to do one by one only.)
@@ -75,7 +73,7 @@ Each module is **highly extensible and modular**. This is where object-oriented 
 
 There's a separate module of tasks that is directly related and reads along as the Challenge tasks. These tasks can later be drawn into Airflow Dags to produce a weather_data pipeline and reduce manual interaction.
 
-![Airflow Dag](assets/challenge_dag.png)
+![Airflow Dag](assets/dag.png)
 
 **Extract-Load** pairs have chunk capability which makes them well enough to pull a large volume of data. While currently, the pipeline lacks multiprocessing but this can surely be accommodated without harming the current architecture.
 
@@ -133,8 +131,8 @@ docker run -d -p 5000:5432\
 python setup.py install
 ```
 
-- Go to ```weather_pipeline/config.py``` and select ```# no airflow```
-uncomment ```airflow``` part
+- Go to ```weather_pipeline/config.py``` and uncomment ```# no airflow```
+comment ```airflow``` part
 
 - Run the pipeline
 
@@ -148,8 +146,8 @@ _Note_: To change city or date, open ```pipeline.py``` and change.
 
 ## 2. With Airflow
 
-- Go to ```weather_pipeline/config.py``` and select ```# airflow```
-uncomment ```# no airflow``` part
+- Go to ```weather_pipeline/config.py``` and uncomment ```# airflow```
+comment ```# no airflow``` part
 
 - Run the ```setup.sh``` script
 ```bash
