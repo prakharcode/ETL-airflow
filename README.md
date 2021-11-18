@@ -4,7 +4,9 @@
 **Project outline**: Getting data of temprature from different weather stations in Germany. Find average temprature of each city in Germany, for everyday in a year, by only selecting weather stations that are in 5km radius from the center of city. After getting temprature for each day take calculate "hotness score". A city "hotness" score is the number of days in the last full year that its median values are higher than the overall Germany median values by more or equal to 3 degrees Celsius.
 
 *City data*: https://codierung.adfc-hessen.de/code/ein/code/opengeodb/DE.tab
+
 *Weather stations*: https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt
+
 *Weather stations' data partitioned by year*: https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/by_year/
 
 ---
